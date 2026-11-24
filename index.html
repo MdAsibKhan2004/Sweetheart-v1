@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#160006">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Great+Vibes&family=Dancing+Script:wght@500;600;700&family=Quicksand:wght@500;600;700&family=Hind+Siliguri:wght@500;600&display=swap" rel="stylesheet">
 <title>My Dear Queen Tazmim</title>
 <style>
 :root{--red:#ff1744;--deep:#5d0018;--gold:#ffd36b;--white:#fff}
@@ -116,11 +117,126 @@ h1{font-size:clamp(2rem,5vw,4.3rem);text-align:center;margin:18px 0 12px;color:#
   .btn{padding:12px 22px;font-size:1rem}
   #welcome .music{margin-top:clamp(22px,5vh,50px)}
 }
+
+#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
+.trail{position:fixed;pointer-events:none;z-index:59;font-size:14px;animation:trail .9s forwards}
+@keyframes trail{to{transform:translateY(-30px) scale(.3);opacity:0}}
+.counter{margin:0 0 4px;padding:10px 22px;border:1px solid rgba(255,177,197,.5);border-radius:999px;background:rgba(60,6,30,.55);color:#ffe2eb;font-size:clamp(.9rem,2.4vw,1.1rem);text-align:center;box-shadow:0 0 18px rgba(255,23,68,.4);animation:fadeUp 1s 1.4s both}
+.reason,.progress{font:italic 1rem Georgia,serif;color:#ffd6e0;text-align:center;min-height:1.4em;text-shadow:0 2px 8px #000;max-width:440px}
+.progress{font:14px Arial;color:#ffc2d1}
+.photo-inner img{cursor:zoom-in}
+.letter-btn{position:fixed;top:12px;right:12px;z-index:40;width:46px;height:46px;border-radius:50%;border:1px solid #ffb1c5;background:rgba(255,23,68,.25);font-size:1.3rem;cursor:pointer;box-shadow:0 0 16px #ff1744;animation:pulse 2s infinite}
+.overlay{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:16px;background:rgba(10,0,5,.9);backdrop-filter:blur(6px);overflow:auto}
+.overlay.show{display:grid}
+.overlay>img{max-width:94vw;max-height:90vh;border-radius:16px;box-shadow:0 0 40px #ff1744}
+.paper{position:relative;max-width:560px;width:100%;margin:auto;padding:30px 26px;border-radius:20px;color:#3a0716;line-height:1.8;text-align:center;background:linear-gradient(160deg,#fff1f4,#ffd6e0);border:3px double #ff4d73;box-shadow:0 0 40px #ff1744;animation:fadeUp .8s both}
+.paper h2{margin:0 0 10px;color:#b0002e}
+.paper p{margin:8px 0;white-space:pre-line}
+.paper .sign{font-style:italic;color:#b0002e;margin-top:14px}
+.paper .x{position:absolute;top:8px;right:14px;font-size:1.6rem;cursor:pointer;color:#b0002e;background:none;border:0}
+.ask{display:flex;gap:18px;justify-content:center;align-items:center;margin-top:18px;min-height:60px;flex-wrap:wrap}
+.ask .btn{padding:12px 30px;animation:none}
+#noBtn{position:relative}
+
+/* ===== v3 beauty layer ===== */
+:root{--script:"Great Vibes","Brush Script MT",cursive;--hand:"Dancing Script","Brush Script MT",cursive}
+#sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffe9b0;box-shadow:0 0 8px #ffd36b;animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.6)}50%{opacity:1;transform:scale(1.3)}}
+.bokeh{position:absolute;bottom:-80px;border-radius:50%;background:radial-gradient(circle,rgba(255,120,160,.35),rgba(255,23,68,0) 70%);animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-115vh) translateX(var(--sx));opacity:0}}
+h1,.game-title{font-family:var(--script);font-weight:400;letter-spacing:2px;font-size:clamp(3rem,9vw,6.2rem);line-height:1.1;background:linear-gradient(90deg,#ffd9e2,#fff,#ffb1c5,#ffd36b,#ffd9e2);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 0 14px rgba(255,23,68,.75));animation:shimmer 6s linear infinite}
+@keyframes shimmer{to{background-position:250% 0}}
+.subtitle{font-family:var(--hand);font-size:clamp(1.6rem,4vw,2.4rem)}
+.bangla{font-size:1.15rem;color:#ffd6e0;text-align:center;text-shadow:0 2px 10px #000;margin:-18px 0 26px;animation:fadeUp 1s .8s both}
+.machine{background:linear-gradient(160deg,rgba(80,10,45,.55),rgba(20,2,12,.7));backdrop-filter:blur(14px);border-color:rgba(255,190,210,.5)}
+.slot.revealed{box-shadow:0 0 22px #ff1744,0 0 48px rgba(255,211,107,.45)}
+.photo-frame{transform:rotate(-1.6deg);transition:transform .4s}
+.photo-frame:hover{transform:rotate(0) scale(1.02)}
+.photo-frame:before{content:"";position:absolute;inset:0;border-radius:24px;pointer-events:none;z-index:3;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.28) 50%,transparent 60%);background-size:250% 100%;animation:sweep 5s ease-in-out infinite}
+@keyframes sweep{0%{background-position:150% 0}60%,100%{background-position:-50% 0}}
+.namebox{font-family:var(--hand);font-size:clamp(1.1rem,2.4vw,1.5rem)}
+.reason{font-family:var(--hand);font-style:normal;font-size:1.3rem;color:#ffe2eb}
+.paper{background:radial-gradient(circle at 20% 10%,#fff,#ffe3ea 70%);border:3px double #e0405f}
+.paper h2{font-family:var(--script);font-weight:400;font-size:2.6rem;margin:6px 0 10px}
+.paper p{font-family:var(--hand);font-size:1.35rem;line-height:1.7}
+.paper .sign{font-family:var(--script);font-size:2rem}
+.paper:before,.paper:after{position:absolute;font-size:1.6rem}
+.paper:before{content:"🌹";top:8px;left:12px}.paper:after{content:"🌹";bottom:8px;right:12px}
+.introtxt{text-align:center;font-family:var(--script);font-size:clamp(2rem,7vw,3.6rem);color:#ffd9e2;text-shadow:0 0 18px #ff1744;line-height:1.5}
+.introtxt span{display:block;opacity:0;animation:fadeUp 1.3s forwards}
+#np{position:fixed;left:50%;bottom:8px;transform:translateX(-50%);z-index:30;padding:5px 14px;border-radius:999px;background:rgba(40,0,18,.65);border:1px solid rgba(255,150,180,.4);color:#ffc2d1;font:12px Arial;pointer-events:none;display:none;white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+#np i{display:inline-block;width:3px;height:10px;margin-right:2px;background:#ff6f95;animation:eq .8s ease-in-out infinite;vertical-align:middle}
+#np i:nth-child(2){animation-delay:.2s}#np i:nth-child(3){animation-delay:.4s}
+#np.off i{animation-play-state:paused}
+@keyframes eq{50%{height:3px}}
+@media(max-width:760px){#welcome h1{font-size:3rem;margin:4px 0}.game-title{font-size:2.3rem;line-height:46px;height:46px}.subtitle{font-size:1.5rem}.bangla{margin:-8px 0 14px;font-size:1rem}.paper h2{font-size:2.1rem}.paper p{font-size:1.15rem}}
+
+/* ===== v4: readable fonts + no clipping ===== */
+:root{--head:"Playfair Display",Georgia,serif;--body:"Quicksand","Hind Siliguri",Arial,sans-serif}
+h1,.game-title{font-family:var(--head);font-style:italic;font-weight:700;font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1.35;padding:.1em .2em;letter-spacing:.5px;margin:10px 0 8px;overflow:visible;animation:none;background:linear-gradient(90deg,#ffd9e2,#fff,#ffc2d1);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 10px rgba(255,23,68,.7))}
+.subtitle{font-family:var(--head);font-style:italic;font-weight:600;font-size:clamp(1.1rem,2.6vw,1.6rem);line-height:1.5;padding:.1em 0;margin:clamp(22px,5vh,44px) 0 clamp(16px,3vh,28px)}
+.bangla{font-family:var(--body);font-size:1rem;margin:-6px 0 18px}
+.instructions{font-family:var(--body);font-size:1rem;font-weight:600}
+.counter{font-family:var(--body);font-size:.9rem;padding:8px 16px}
+.namebox{font-family:var(--body);font-weight:600;font-size:clamp(.9rem,1.8vw,1.05rem);padding:10px 16px;line-height:1.35}
+.reason{font-family:var(--body);font-weight:600;font-size:.95rem;min-height:0;line-height:1.4}
+.progress{font-family:var(--body);font-size:.8rem;min-height:0}
+.introtxt{font-family:var(--head);font-style:italic;font-weight:600;font-size:clamp(1.5rem,5.5vw,2.5rem);line-height:1.6}
+.overlay{place-items:safe center}
+.paper{padding:24px 22px;max-width:520px}
+.paper h2{font-family:var(--head);font-style:italic;font-weight:700;font-size:1.7rem;line-height:1.4;margin:4px 0 8px}
+.paper p{font-family:var(--body);font-weight:600;font-size:1rem;line-height:1.75}
+.paper .sign{font-family:var(--head);font-style:italic;font-size:1.15rem}
+#np{font-family:var(--body)}
+@media(max-width:760px){
+#welcome h1{font-size:1.9rem;margin:4px 0}
+.game-title{font-size:1.5rem;line-height:38px;height:38px;overflow:visible;margin:0 0 8px}
+.subtitle{font-size:1.05rem;margin:16px 0 12px}
+.instructions{font-size:.95rem}
+.namebox{font-size:.85rem}
+.reason{font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:88vw}
+.progress{display:none}
+.photo-frame{height:calc(var(--app-h)*.70 - 200px)}
+.paper h2{font-size:1.45rem}.paper p{font-size:.95rem}
+}
+
+/* ===== v5: font corrections ===== */
+:root{--script:"Great Vibes","Brush Script MT",cursive;--hand:"Dancing Script","Brush Script MT",cursive}
+/* 1. Title: Great Vibes (slightly smaller) */
+h1,.game-title{font-family:var(--script);font-style:normal;font-weight:400;letter-spacing:1px;font-size:clamp(2.3rem,5.6vw,3.9rem);line-height:1.5;padding:.12em .3em}
+/* 2. Subtitle: Dancing Script */
+.subtitle{font-family:var(--hand);font-style:normal;font-weight:600;font-size:clamp(1.4rem,3.2vw,2rem);line-height:1.6}
+/* 3. Instructions: Georgia / Times serif */
+.instructions{font-family:Georgia,"Times New Roman",serif;font-weight:normal;font-size:1.1rem}
+/* 4. Intro text: Great Vibes */
+.introtxt{font-family:var(--script);font-style:normal;font-weight:400;font-size:clamp(2rem,7vw,3.4rem);line-height:1.5}
+/* 5. Letter: Great Vibes heading/sign, Dancing Script body & question */
+.paper h2{font-family:var(--script);font-style:normal;font-weight:400;font-size:2.5rem;line-height:1.3}
+.paper p{font-family:var(--body);font-weight:600;font-size:1rem;line-height:1.75}
+.paper .sign{font-family:var(--head);font-style:italic;font-weight:700;font-size:1.15rem}
+.paper .ask p,.paper #yesMsg{font-family:var(--hand);font-weight:600;font-size:1.3rem}
+@media(max-width:760px){
+#welcome h1{font-size:2.3rem}
+.game-title{font-size:1.9rem;line-height:44px;height:44px}
+.subtitle{font-size:1.3rem}
+.instructions{font-size:1rem}
+.paper h2{font-size:2.1rem}.paper p{font-size:.95rem}.paper .sign{font-size:1.1rem}.paper .ask p,.paper #yesMsg{font-size:1.2rem}
+}
+
+/* ===== v6: final texts + smooth RGB title ===== */
+.allDone{font-family:Georgia,"Times New Roman",serif;font-weight:normal;font-size:1.15rem}
+#imageName,.namebox.final{font-family:var(--hand);font-style:normal;font-weight:700;font-size:clamp(1rem,2vw,1.15rem);letter-spacing:.3px;line-height:1.35;padding:10px 16px}
+.game-title{background: linear-gradient(90deg, #ffd9e2, #fff, #ffb1c5, #ffd36b, #ffd9e2);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:rgbFlow 9s linear infinite}
+@keyframes rgbFlow{from{background-position:0% 0}to{background-position:200% 0}}
+.letter-btn.unread:after{content:"";position:absolute;top:1px;right:1px;width:12px;height:12px;border-radius:50%;background:#f2587d;box-shadow:0 1px 4px rgba(0,0,0,.25)}
 </style>
 </head>
 <body>
+<div id="sky"></div>
 <section id="welcome" class="page">
   <h1>My Dear Queen Tazmim</h1>
+  <div class="counter hidden" id="counter"></div>
   <p class="subtitle">Are You Ready For this Surprised</p>
   <div class="instructions">
     <div>If you are ready for the surprise, click the Start button</div>
@@ -143,7 +259,7 @@ h1{font-size:clamp(2rem,5vw,4.3rem);text-align:center;margin:18px 0 12px;color:#
 </section>
 
 <section id="deadPage" class="page hidden">
-  <div class="dead">Website is Dead plz Exit</div>
+  <div class="dead">Website is Dead plz Exit<br><button class="btn" id="backBtn" style="margin-top:28px;font-size:1rem;display:none">Wait… I want my surprise ❤</button></div>
 </section>
 
 <section id="surprise" class="page hidden">
@@ -155,10 +271,20 @@ h1{font-size:clamp(2rem,5vw,4.3rem);text-align:center;margin:18px 0 12px;color:#
     <div class="viewer">
       <div class="photo-frame"><div class="photo-inner" id="photoInner"><span style="color:#ffb1c5;text-align:center;padding:20px">Your surprise photo will appear here ❤️</span></div></div>
       <div class="namebox" id="imageName">A special surprise for you</div>
-    </div>
+      <div class="reason" id="reason"></div>
+          </div>
   </div>
 </section>
 
+<button class="letter-btn unread hidden" id="letterBtn" title="A letter for you">💌</button>
+<div class="overlay" id="lightbox"><img id="lbImg" alt=""></div>
+<div class="overlay" id="letterBox"><div class="paper"><button class="x" id="letterX" aria-label="Close">×</button>
+  <h2 id="lTitle"></h2><p id="lBody"></p><p class="sign" id="lSign"></p>
+  <div class="ask hidden" id="ask"><p style="width:100%;font-weight:bold;font-size:1.25rem;color:#b0002e">Will you be mine forever? 💍</p>
+  <button class="btn" id="yesBtn">YES ❤</button><button class="btn close" id="noBtn">No</button></div>
+  <p id="yesMsg" class="hidden" style="font-size:1.4rem;color:#b0002e;font-weight:bold"></p></div></div>
+<div class="overlay" id="intro"><div class="introtxt" id="introTxt"></div></div>
+<div id="np"></div>
 <div id="musicStatus" aria-hidden="true"></div>
 <audio id="audio" preload="none"></audio>
 
@@ -168,6 +294,55 @@ setAppH();
 window.addEventListener("resize",setAppH);
 window.addEventListener("orientationchange",()=>setTimeout(setAppH,250));
 // File list is maintained in assets.json at the repository root.
+
+/* ====== EDIT ME ====== */
+const HER_NAME = "Tazmim";
+const MY_NAME  = "";                 // your name for the letter signature
+const START_DATE = "";               // e.g. "2024-02-14T18:30:00" -> shows "Together for X days..." (empty = hidden)
+const LETTER_TITLE = "My Dearest " + HER_NAME;
+const LETTERS = {
+  // 💌 button (sms box)
+  sms: `${HER_NAME}, some people walk into your life and quietly turn every ordinary day into a beautiful one.
+You are that person for me.
+
+When I think of you, my heart feels calm,
+and a smile comes to my face without even trying.
+
+Tumi amar shokal, tumi amar shondha,
+tumi-i amar shob kichu.
+
+Aami tomake onek onek bhalobashi, Jan. ❤`,
+
+  // opens after all surprises are revealed (with "Will you be mine forever?")
+  finale: `If you are reading this, it means you found every single surprise I hid for you.
+
+Every picture is a memory,
+every song is a feeling,
+and every little heart on this screen
+is my way of saying what words never fully can:
+you are the best thing that ever happened to me.
+
+Thank you for your smile, your patience and your love.
+
+Ei golpo ta kono dino shesh na hok, Jan.
+Aami tomake shotti-i onek bhalobashi. ❤`,
+
+  // after tapping YES
+  yes: `You just made me the happiest person in the whole world. 🥹
+
+From today and every day after,
+I promise to hold your hand on the sunny days
+and the stormy ones too,
+to make you laugh when you are sad,
+and to choose you again and again.
+
+Tumi "Yes" bolecho,
+ar amar prithibi ta aro shundor hoye gelo.
+
+Always yours, my Jan. ❤`
+};
+const REASONS = ["Your smile fixes my worst days","You make ordinary moments feel special","Your voice is my peace","You are my best friend and my favourite person","Every moment with you feels like home","You make me want to be a better man","Just thinking of you makes me smile","You are my today and all my tomorrows"];
+/* ===================== */
 const ASSETS_FILE = "assets.json";
 const FALLBACK_PICTURES = [];
 const FALLBACK_SONGS = [];
@@ -179,6 +354,51 @@ const audio = $("audio");
 const ICON_PLAY='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>';
 const ICON_PAUSE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h4v15H6zM14 4.5h4v15h-4z"/></svg>';
 
+
+// ---------- effects ----------
+const fx=document.createElement("canvas");fx.id="fx";document.body.appendChild(fx);
+const cx=fx.getContext("2d");let parts=[],raf=0;
+function sizeFx(){fx.width=innerWidth;fx.height=innerHeight}sizeFx();addEventListener("resize",sizeFx);
+function burst(x=innerWidth/2,y=innerHeight/2,n=70){const e=["❤","💖","✨","🌹","💗"];for(let i=0;i<n;i++){const a=Math.random()*6.283,v=2+Math.random()*7;parts.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-3,t:1,e:e[i%5],z:14+Math.random()*16})}if(!raf)loop()}
+function loop(){cx.clearRect(0,0,fx.width,fx.height);parts=parts.filter(p=>p.t>0);parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.14;p.vx*=.99;p.t-=.011;cx.globalAlpha=Math.max(p.t,0);cx.font=p.z+"px serif";cx.fillText(p.e,p.x,p.y)});raf=parts.length?requestAnimationFrame(loop):0}
+let lastTrail=0;
+addEventListener("pointermove",e=>{const n=Date.now();if(n-lastTrail<70)return;lastTrail=n;const t=document.createElement("div");t.className="trail";t.textContent=["❤","✨","💕"][n%3];t.style.left=e.clientX+"px";t.style.top=e.clientY+"px";document.body.appendChild(t);setTimeout(()=>t.remove(),900)});
+addEventListener("pointerdown",e=>{if(!e.target.closest("#noBtn"))burst(e.clientX,e.clientY,10)});
+
+// ---------- together counter ----------
+function tickCounter(){const c=$("counter");if(!START_DATE||isNaN(new Date(START_DATE)))return;c.classList.remove("hidden");
+  const f=()=>{let s=Math.max(0,Math.floor((Date.now()-new Date(START_DATE))/1000));const d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);c.textContent=`💞 Together for ${d} days ${h} hrs ${m} min ${s%60} sec 💞`};f();setInterval(f,1000)}
+tickCounter();
+
+// ---------- letter / finale / lightbox ----------
+let revealed=new Set(),totalPics=0,finaleShown=false;
+function openLetter(withAsk){$("lTitle").textContent=LETTER_TITLE;typeLetter(withAsk?LETTERS.finale:LETTERS.sms);$("lSign").textContent="— "+(MY_NAME?MY_NAME+", ":"")+"Yours forever ❤";$("ask").classList.toggle("hidden",!withAsk);$("yesMsg").classList.add("hidden");$("letterBox").classList.add("show");burst(innerWidth/2,innerHeight/3,50)}
+$("letterBtn").addEventListener("click",()=>{$("letterBtn").classList.remove("unread");openLetter(false)});
+$("letterX").addEventListener("click",()=>{clearInterval(lt);$("letterBox").classList.remove("show")});
+$("lightbox").addEventListener("click",()=>$("lightbox").classList.remove("show"));
+$("photoInner").addEventListener("click",e=>{if(e.target.tagName==="IMG"){$("lbImg").src=e.target.src;$("lightbox").classList.add("show")}});
+$("yesBtn").addEventListener("click",()=>{$("ask").classList.add("hidden");typeLetter(LETTERS.yes);const m=$("yesMsg");m.textContent="I knew it! I love you "+HER_NAME+", forever and ever 💖";m.classList.remove("hidden");for(let i=0;i<5;i++)setTimeout(()=>burst(Math.random()*innerWidth,Math.random()*innerHeight*.7,60),i*350)});
+function dodge(e){e.preventDefault();const b=$("noBtn");b.style.left=(Math.random()*200-100)+"px";b.style.top=(Math.random()*120-60)+"px";b.textContent=["Nope 😜","Try again 😘","Wrong button 💕","Not allowed 😂"][Math.floor(Math.random()*4)]}
+$("noBtn").addEventListener("pointerenter",dodge);$("noBtn").addEventListener("pointerdown",dodge);$("noBtn").addEventListener("click",dodge);
+function onReveal(item){revealed.add(item.url);$("reason").textContent="💗 "+REASONS[(revealed.size-1)%REASONS.length];burst(innerWidth/2,innerHeight*.4,80)}
+function finale(){if(finaleShown)return;finaleShown=true;setTimeout(()=>openLetter(true),900)}
+
+// ---------- sky: stars + floating glow ----------
+(function(){const k=$("sky");for(let i=0;i<45;i++){const e=document.createElement("i");e.className="star";e.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*3}s;animation-duration:${2+Math.random()*3}s`;k.appendChild(e)}
+for(let i=0;i<14;i++){const b=document.createElement("i");b.className="bokeh";const z=30+Math.random()*90;b.style.cssText=`left:${Math.random()*100}%;width:${z}px;height:${z}px;animation-duration:${14+Math.random()*16}s;animation-delay:${-Math.random()*20}s;--sx:${Math.random()*120-60}px`;k.appendChild(b)}})();
+
+// ---------- typed letter ----------
+let lt;
+function typeLetter(text){clearInterval(lt);const chars=Array.from(text),el=$("lBody");el.textContent="";let i=0;lt=setInterval(()=>{el.textContent+=chars[i++]||"";if(i>=chars.length)clearInterval(lt)},38)}
+
+// ---------- intro curtain ----------
+function playIntro(){const o=$("intro"),t=$("introTxt");const lines=[HER_NAME+"…","I made a little world","only for you ❤"];t.innerHTML=lines.map((l,i)=>`<span style="animation-delay:${i*1.5}s">${l}</span>`).join("");o.classList.add("show");
+  const done=()=>{o.classList.remove("show");burst()};const tm=setTimeout(done,5200);o.onclick=()=>{clearTimeout(tm);done()}}
+
+// ---------- now playing ----------
+function updNp(){const n=$("np");if(!songs.length)return;n.style.display="block";n.classList.toggle("off",audio.paused);n.innerHTML="<i></i><i></i><i></i> ♫ "+songs[currentSongIndex].name}
+audio.addEventListener("play",updNp);audio.addEventListener("pause",updNp);audio.addEventListener("loadstart",updNp);
+let backTimer;
 function startPetals(){
   setInterval(()=>{
     const p=document.createElement("div"); p.className="petal";
@@ -219,6 +439,8 @@ async function loadPictures(){
     console.warn(e);
     picturePool = FALLBACK_PICTURES.map(url=>({name:cleanName(url),url}));
   }
+  totalPics=picturePool.length;
+  
   picturePool.sort(()=>Math.random()-.5);
   visibleSlots=picturePool.splice(0,8);
   renderSlots();
@@ -265,13 +487,14 @@ async function spin(){
     }
     currentImage = null;
     $("photoInner").innerHTML='<span style="color:#ffb1c5;text-align:center;padding:20px">Choosing your next surprise… ❤️</span>';
-    $("imageName").textContent="A new surprise is coming…";
+    $("imageName").classList.remove("final");$("imageName").textContent="A new surprise is coming…";
     renderSlots();
   }
 
   if(!visibleSlots.length){
     $("photoInner").innerHTML='<span style="color:#ffb1c5;text-align:center;padding:20px">All surprises have been revealed ❤️</span>';
-    $("imageName").textContent="Every surprise was for you";
+    $("imageName").classList.add("final");$("imageName").textContent="Every surprise was for you";
+    finale();
     return;
   }
 
@@ -308,16 +531,20 @@ async function spin(){
   img.src=chosen.url;
   img.alt=chosen.name;
   $("photoInner").appendChild(img);
-  $("imageName").textContent=chosen.name;
+  $("imageName").classList.remove("final");$("imageName").textContent=chosen.name;
+  onReveal(chosen);
 
   busy=false;
   renderSlots();
 }
 $("startBtn").addEventListener("click",async()=>{
   $("welcome").classList.add("hidden");$("surprise").classList.remove("hidden");$("surprise").appendChild(document.querySelector(".music"));
+  $("letterBtn").classList.remove("hidden");playIntro();
+  if(songs.length&&audio.paused)audio.play().then(()=>$("toggleSong").innerHTML=ICON_PAUSE).catch(()=>{});
   await loadPictures();
 });
-$("closeBtn").addEventListener("click",()=>{$("welcome").classList.add("hidden");$("deadPage").classList.remove("hidden");$("deadPage").appendChild(document.querySelector(".music"));});
+$("closeBtn").addEventListener("click",()=>{$("welcome").classList.add("hidden");$("deadPage").classList.remove("hidden");$("deadPage").appendChild(document.querySelector(".music"));clearTimeout(backTimer);backTimer=setTimeout(()=>{$("backBtn").style.display="inline-block"},3500);});
+$("backBtn").addEventListener("click",()=>{$("deadPage").classList.add("hidden");$("welcome").classList.remove("hidden");$("welcome").appendChild(document.querySelector(".music"));$("backBtn").style.display="none"});
 
 async function loadSongs(){
   try{
