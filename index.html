@@ -15,7 +15,7 @@ body:before{content:"";position:fixed;inset:0;background:linear-gradient(120deg,
 h1{font-size:clamp(2rem,5vw,4.3rem);text-align:center;margin:18px 0 12px;color:#ffccd5;text-shadow:0 0 8px #ff003c,0 0 22px #b00030;letter-spacing:1px}
 .subtitle{font-size:clamp(1.1rem,2.4vw,1.6rem);text-align:center;color:#fff;text-shadow:0 2px 10px #000;margin:8px 0}
 .instructions{text-align:center;line-height:1.8;color:white;font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;font-weight:normal;margin:22px auto 26px;text-shadow:0 2px 10px #000}
-.actions{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:auto;padding:35px 0 15px}
+.actions{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:auto;padding:35px 0 clamp(70px,16vh,170px)}
 .btn{border:1px solid rgba(255,255,255,.65);border-radius:999px;padding:14px 42px;font-size:1.15rem;font-weight:bold;letter-spacing:1px;color:#fff;cursor:pointer;background:linear-gradient(135deg,#ff1744,#9c0030,#ff7b9b);box-shadow:0 0 18px #ff1744;transition:.25s;animation:pulse 2s infinite}
 .btn.close{background:linear-gradient(135deg,#3b3b55,#171725,#7b2940);box-shadow:0 0 16px #a8a8d0}
 .btn:hover{transform:translateY(-4px) scale(1.04)}
@@ -41,39 +41,62 @@ h1{font-size:clamp(2rem,5vw,4.3rem);text-align:center;margin:18px 0 12px;color:#
 .slot:nth-child(6){grid-area:3/2}
 .slot:nth-child(7){grid-area:3/1}
 .slot:nth-child(8){grid-area:2/1}
-#spinBtn{grid-area:2/2;align-self:center;justify-self:center;width:100%;max-width:230px;min-height:86px;padding:14px 10px;font-size:clamp(1.15rem,2.5vw,2rem);border:3px solid #ffe9a3;border-radius:14px;background:linear-gradient(135deg,#ffe477,#ff9d00);color:#3a1000;font-weight:900;box-shadow:0 0 22px #ffb000;cursor:pointer;animation:pulse 1.8s infinite}
+#spinBtn{grid-area:2/2;align-self:center;justify-self:center;width:100%;max-width:110px;min-height:44px;padding:5px 4px;font-size:clamp(.8rem,1.4vw,1rem);border:2px solid #ffe9a3;border-radius:10px;background:linear-gradient(135deg,#ffe477,#ff9d00);color:#3a1000;font-weight:900;box-shadow:0 0 22px #ffb000;cursor:pointer;animation:pulse 1.8s infinite}
 #spinBtn:disabled{opacity:.7;cursor:wait}
 .slot img{width:100%;height:100%;object-fit:cover;filter:brightness(.12) saturate(.4);transition:filter .3s}
-.slot .veil{position:absolute;inset:0;display:grid;place-items:center;background:#08030a70;color:#ff9bb8;font:700 .8rem Arial;letter-spacing:1px}
+.slot .veil{position:absolute;inset:0;display:grid;place-items:center;background:#08030a70;color:#ff6f95;font:700 clamp(1.3rem,3vw,2rem) Arial;text-shadow:0 0 10px #ff1744}
 .slot.revealed img{filter:none}
-.slot.revealed .veil{display:none}\n.slot.active{z-index:2;border:2px solid #ffe18b;box-shadow:0 0 18px #ffb000, inset 0 0 12px #ffb000;transform:scale(1.045)}\n.slot.active img{filter:brightness(.55) saturate(1.2)}\n.slot.revealed{border:2px solid #ffb1c5;box-shadow:0 0 14px #ff1744}
+.slot.revealed .veil{display:none}
+.slot.active{z-index:2;border:2px solid #ffe18b;box-shadow:0 0 18px #ffb000, inset 0 0 12px #ffb000;transform:scale(1.045)}
+.slot.active img{filter:brightness(.55) saturate(1.2)}
+.slot.revealed{border:2px solid #ffb1c5;box-shadow:0 0 14px #ff1744}
 .spin-wrap{display:flex;justify-content:center;padding:14px 0 5px}
 .spin{border:2px solid #ffe18b;border-radius:5px;padding:12px 48px;font:bold 1.3rem Arial;color:#321000;background:linear-gradient(#ffe57b,#ff9d00);box-shadow:0 0 18px #ffb000;cursor:pointer}
 .spin:disabled{opacity:.5;cursor:wait}
 .viewer{display:flex;flex-direction:column;align-items:center;gap:16px}
-.photo-frame{width:min(100%,480px);aspect-ratio:4/5;border:3px solid #ffb1c5;border-radius:18px;padding:7px;background:linear-gradient(135deg,#ff1744,#23000d,#ffd36b);box-shadow:0 0 28px #ff1744;perspective:1000px}
+.photo-frame{width:min(100%,440px);aspect-ratio:4/5;border:3px solid #ffb1c5;border-radius:18px;padding:7px;background:linear-gradient(135deg,#ff1744,#23000d,#ffd36b);box-shadow:0 0 28px #ff1744;perspective:1000px}
 .photo-inner{width:100%;height:100%;border-radius:11px;overflow:hidden;background:#17000b;display:grid;place-items:center}
 .photo-inner img{width:100%;height:100%;object-fit:contain;animation:flipIn .85s both}
 @keyframes flipIn{from{transform:rotateY(90deg) scale(.8);opacity:0}to{transform:rotateY(0) scale(1);opacity:1}}
-.namebox{width:min(100%,480px);text-align:center;padding:13px 12px;border-radius:12px;border:1px solid #ff9ab6;background:#19000ddd;color:#ffe2eb;font-size:clamp(1.1rem,2.5vw,1.55rem);box-shadow:0 0 14px #ff1744;overflow-wrap:anywhere}
+.namebox{width:min(100%,440px);text-align:center;padding:13px 12px;border-radius:12px;border:1px solid #ff9ab6;background:#19000ddd;color:#ffe2eb;font-size:clamp(1rem,2vw,1.3rem);box-shadow:0 0 14px #ff1744;overflow-wrap:anywhere}
 .hint{font:14px Arial;color:#ffe0e9;text-align:center;margin:8px 0}
-@media(max-width:760px){.game-layout{grid-template-columns:1fr}.machine{order:2}.viewer{order:1}.photo-frame{width:min(78vw,360px)}.page{padding-top:16px}}
+@media(max-width:760px){.game-layout{grid-template-columns:1fr}.machine{order:2}.viewer{order:1}.photo-frame,.namebox{width:min(74vw,310px)}.namebox{font-size:1rem;padding:9px 8px}.viewer{gap:10px}.page{padding-top:16px}}
 @media(max-width:700px){
   .game-layout{grid-template-columns:minmax(0,1fr);width:min(100%,520px)}
   .machine{width:100%;box-sizing:border-box}
-  .slots{grid-template-rows:repeat(3,minmax(82px,1fr));gap:7px}
-  #spinBtn{min-height:68px;font-size:1.15rem}
+  .slots{grid-template-rows:repeat(3,minmax(64px,1fr));gap:6px}
+  #spinBtn{min-height:34px;max-width:74px;font-size:.72rem;padding:3px;border-width:2px;border-radius:8px}
+  .game-layout{width:min(100%,400px);gap:16px}
+  .machine{padding:10px;border-radius:22px}
+  .game-title{margin-bottom:12px}
+}
+
+/* ---- Phone: whole 2nd page always fits the real visible screen height ---- */
+:root{--app-h:100vh}
+@media(max-width:760px){
+  #surprise{height:var(--app-h);min-height:0;padding:8px 10px;overflow:hidden;justify-content:flex-start;gap:0}
+  .game-title{font-size:1.4rem;line-height:34px;height:34px;margin:0 0 8px;overflow:hidden}
+  .game-layout{grid-template-columns:minmax(0,1fr);width:100%;gap:8px;align-items:start}
+  .viewer{gap:8px}
+  .photo-frame{width:auto;max-width:88vw;height:calc(var(--app-h)*.70 - 172px);padding:5px;border-width:2px}
+  .namebox{width:min(88vw,340px);height:36px;line-height:36px;padding:0 10px;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .machine{width:min(94vw,calc(var(--app-h)*.345 + 16px));margin-inline:auto;padding:8px;border-radius:18px}
+  .slots{height:calc(var(--app-h)*.30);grid-template-rows:repeat(3,minmax(0,1fr));gap:5px}
+  .slot{aspect-ratio:auto;min-height:0;border-radius:10px}
+  .slot .veil{font-size:1.1rem}
+  .music{top:auto;bottom:6px;left:50%;right:auto;transform:translateX(-50%);padding:0;gap:16px;background:none;border:0;box-shadow:none}
+  .music button{width:34px;height:34px;font-size:15px;box-shadow:0 0 10px #ff1744}
 }
 </style>
 </head>
 <body>
 <section id="welcome" class="page">
-  <h1>My Dear Queen Tazmim</h1>
-  <p class="subtitle">Are You Ready For this Surprised</p>
+  <h1>FUCK</h1>
+  <p class="subtitle">Ohh Yee</p>
   <div class="instructions">
-    <div>If you are ready for the surprise, click the Start button</div>
+    <div>yaaah</div>
     <div>Or</div>
-    <div>If you are not ready for the surprise, click the Close button</div>
+    <div>Fuck Sakib</div>
   </div>
   <div class="actions">
     <button class="btn" id="startBtn">✦ START ✦</button>
@@ -86,7 +109,7 @@ h1{font-size:clamp(2rem,5vw,4.3rem);text-align:center;margin:18px 0 12px;color:#
 </section>
 
 <section id="surprise" class="page hidden">
-  <h1 class="game-title">I Love You Jan</h1>
+  <h1 class="game-title">Sakib</h1>
   <div class="game-layout">
     <div class="machine">
       <div class="slots" id="slots"></div>
@@ -107,6 +130,10 @@ h1{font-size:clamp(2rem,5vw,4.3rem);text-align:center;margin:18px 0 12px;color:#
 <audio id="audio" preload="none"></audio>
 
 <script>
+function setAppH(){document.documentElement.style.setProperty("--app-h",window.innerHeight+"px");}
+setAppH();
+window.addEventListener("resize",setAppH);
+window.addEventListener("orientationchange",()=>setTimeout(setAppH,250));
 // File list is maintained in assets.json at the repository root.
 const ASSETS_FILE = "assets.json";
 const FALLBACK_PICTURES = [];
@@ -130,13 +157,18 @@ function startPetals(){
 }
 startPetals();
 
+const cleanName = path => {
+  let file = String(path).split(/[\\/]/).pop().split("?")[0].split("#")[0];
+  try{ file = decodeURIComponent(file); }catch(e){}
+  return file.replace(/\.[A-Za-z0-9]{1,6}$/, "").trim();
+};
 async function loadAssetList(){
   const response = await fetch(ASSETS_FILE, { cache: "no-store" });
   if(!response.ok) throw new Error("Could not load assets.json. Check that it is in the repository root.");
   const data = await response.json();
   const resolveItems = (items=[]) => items
     .filter(path => typeof path === "string" && path.trim())
-    .map(path => ({ name: path.split("/").pop().replace(/\\.[^.]+$/, ""), url: new URL(path, document.baseURI).href }));
+    .map(path => ({ name: cleanName(path), url: new URL(path, document.baseURI).href }));
   return { pictures: resolveItems(data.pictures), songs: resolveItems(data.songs) };
 }
 let assetListPromise = null;
@@ -150,7 +182,7 @@ async function loadPictures(){
     picturePool = assets.pictures;
   }catch(e){
     console.warn(e);
-    picturePool = FALLBACK_PICTURES.map(url=>({name:decodeURIComponent(url.split("/").pop()).replace(/\\.[^.]+$/,""),url}));
+    picturePool = FALLBACK_PICTURES.map(url=>({name:cleanName(url),url}));
   }
   picturePool.sort(()=>Math.random()-.5);
   visibleSlots=picturePool.splice(0,8);
@@ -162,15 +194,18 @@ function renderSlots(){
   visibleSlots.forEach((item,i)=>{
     const slot=document.createElement("div");
     slot.className="slot"+(currentImage&&currentImage.url===item.url?" revealed":"");
-    const img=document.createElement("img"); img.src=item.url; img.alt="Hidden surprise";
-    const veil=document.createElement("div"); veil.className="veil"; veil.textContent="MYSTERY";
-    slot.append(img,veil);
+    const veil=document.createElement("div"); veil.className="veil"; veil.textContent="❤";
+    slot.append(veil);
+    if(currentImage&&currentImage.url===item.url){
+      const img=document.createElement("img"); img.src=item.url; img.alt=item.name;
+      slot.prepend(img);
+    }
     container.appendChild(slot);
   });
   for(let i=visibleSlots.length;i<8;i++){
     const slot=document.createElement("div");
     slot.className="slot";
-    slot.innerHTML='<div class="veil">MYSTERY</div>';
+    slot.innerHTML='<div class="veil">❤</div>';
     container.appendChild(slot);
   }
   const spinButton=document.createElement("button");
@@ -212,15 +247,15 @@ async function spin(){
   // Lottery-style selection: only one tile lights up at a time.
   const targetIndex=Math.floor(Math.random()*visibleSlots.length);
   const startIndex=Math.floor(Math.random()*visibleSlots.length);
-  const totalSteps=12+((targetIndex-startIndex+visibleSlots.length)%visibleSlots.length);
-  let activeIndex=startIndex;
-  for(let step=0;step<totalSteps;step++){
+  const n=visibleSlots.length;
+  const totalSteps=n*2+((targetIndex-startIndex+n)%n);
+  for(let step=0;step<=totalSteps;step++){
     const tiles=[...$("slots").querySelectorAll(".slot")];
     tiles.forEach(tile=>tile.classList.remove("active"));
-    activeIndex=(startIndex+step)%visibleSlots.length;
+    const activeIndex=(startIndex+step)%n;
     if(tiles[activeIndex]) tiles[activeIndex].classList.add("active");
     const remaining=totalSteps-step;
-    await wait(remaining<=4 ? 210 : 95);
+    await wait(remaining<=2 ? 380 : remaining<=5 ? 240 : remaining<=8 ? 150 : 85);
   }
 
   const tiles=[...$("slots").querySelectorAll(".slot")];
