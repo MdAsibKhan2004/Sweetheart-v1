@@ -14,7 +14,7 @@ body:before{content:"";position:fixed;inset:0;background:linear-gradient(120deg,
 .hidden{display:none!important}
 h1{font-size:clamp(2rem,5vw,4.3rem);text-align:center;margin:18px 0 12px;color:#ffccd5;text-shadow:0 0 8px #ff003c,0 0 22px #b00030;letter-spacing:1px}
 .subtitle{font-size:clamp(1.1rem,2.4vw,1.6rem);text-align:center;color:#fff;text-shadow:0 2px 10px #000;margin:8px 0}
-.instructions{text-align:center;line-height:1.8;color:white;font:600 1.05rem Arial,sans-serif;margin:22px auto 26px}
+.instructions{text-align:center;line-height:1.8;color:white;font-family:Georgia,"Times New Roman",serif;font-size:1.05rem;font-weight:normal;margin:22px auto 26px;text-shadow:0 2px 10px #000}
 .actions{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:auto;padding:35px 0 15px}
 .btn{border:1px solid rgba(255,255,255,.65);border-radius:999px;padding:14px 42px;font-size:1.15rem;font-weight:bold;letter-spacing:1px;color:#fff;cursor:pointer;background:linear-gradient(135deg,#ff1744,#9c0030,#ff7b9b);box-shadow:0 0 18px #ff1744;transition:.25s;animation:pulse 2s infinite}
 .btn.close{background:linear-gradient(135deg,#3b3b55,#171725,#7b2940);box-shadow:0 0 16px #a8a8d0}
@@ -36,7 +36,7 @@ h1{font-size:clamp(2rem,5vw,4.3rem);text-align:center;margin:18px 0 12px;color:#
 .slot img{width:100%;height:100%;object-fit:cover;filter:brightness(.12) saturate(.4);transition:filter .3s}
 .slot .veil{position:absolute;inset:0;display:grid;place-items:center;background:#08030a70;color:#ff9bb8;font:700 .8rem Arial;letter-spacing:1px}
 .slot.revealed img{filter:none}
-.slot.revealed .veil{display:none}
+.slot.revealed .veil{display:none}\n.slot.active{z-index:2;border:2px solid #ffe18b;box-shadow:0 0 18px #ffb000, inset 0 0 12px #ffb000;transform:scale(1.045)}\n.slot.active img{filter:brightness(.55) saturate(1.2)}\n.slot.revealed{border:2px solid #ffb1c5;box-shadow:0 0 14px #ff1744}
 .spin-wrap{display:flex;justify-content:center;padding:14px 0 5px}
 .spin{border:2px solid #ffe18b;border-radius:5px;padding:12px 48px;font:bold 1.3rem Arial;color:#321000;background:linear-gradient(#ffe57b,#ff9d00);box-shadow:0 0 18px #ffb000;cursor:pointer}
 .spin:disabled{opacity:.5;cursor:wait}
@@ -156,24 +156,70 @@ function renderSlots(){
     const slot=document.createElement("div");slot.className="slot";slot.innerHTML='<div class="veil">♡</div>';$("slots").appendChild(slot);
   }
 }
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 async function spin(){
   if(busy)return;
-  if(!visibleSlots.length){$("poolHint").textContent="All surprises revealed! Add more photos to your folder.";return;}
-  busy=true;$("spinBtn").disabled=true;$("spinBtn").textContent="SPINNING…";
-  const slots=[...$("slots").children];
-  slots.forEach((s,i)=>{s.style.transform="rotateY(360deg)";s.style.transition="transform .55s";});
-  await new Promise(r=>setTimeout(r,650));
-  const chosenIndex=Math.floor(Math.random()*visibleSlots.length);
-  const chosen=visibleSlots[chosenIndex];
+
+  // On the next spin, retire the previously revealed picture and refill its slot.
+  if(currentImage){
+    const previousIndex = visibleSlots.findIndex(item => item.url === currentImage.url);
+    if(previousIndex !== -1){
+      visibleSlots.splice(previousIndex,1);
+      if(picturePool.length) visibleSlots.splice(previousIndex,0,picturePool.shift());
+    }
+    currentImage = null;
+    $("photoInner").innerHTML='<span style="color:#ffb1c5;text-align:center;padding:20px">Choosing your next surprise… ❤️</span>';
+    $("imageName").textContent="A new surprise is coming…";
+    renderSlots();
+  }
+
+  if(!visibleSlots.length){
+    $("poolHint").textContent="All surprises revealed! Add more photos to your assets.json.";
+    $("photoInner").innerHTML='<span style="color:#ffb1c5;text-align:center;padding:20px">All surprises have been revealed ❤️</span>';
+    $("imageName").textContent="Every surprise was for you";
+    return;
+  }
+
+  busy=true;
+  $("spinBtn").disabled=true;
+  $("spinBtn").textContent="SELECTING…";
+
+  // Lottery-style selection: only one tile lights up at a time.
+  const targetIndex=Math.floor(Math.random()*visibleSlots.length);
+  const startIndex=Math.floor(Math.random()*visibleSlots.length);
+  const totalSteps=12+((targetIndex-startIndex+visibleSlots.length)%visibleSlots.length);
+  let activeIndex=startIndex;
+  for(let step=0;step<totalSteps;step++){
+    const tiles=[...$("slots").children];
+    tiles.forEach(tile=>tile.classList.remove("active"));
+    activeIndex=(startIndex+step)%visibleSlots.length;
+    if(tiles[activeIndex]) tiles[activeIndex].classList.add("active");
+    const remaining=totalSteps-step;
+    await wait(remaining<=4 ? 210 : 95);
+  }
+
+  const tiles=[...$("slots").children];
+  tiles.forEach(tile=>tile.classList.remove("active"));
+  const chosen=visibleSlots[targetIndex];
   currentImage=chosen;
-  $("photoInner").innerHTML="";
-  const img=document.createElement("img");img.src=chosen.url;img.alt=chosen.name;$("photoInner").appendChild(img);
-  $("imageName").textContent=chosen.name;
-  visibleSlots.splice(chosenIndex,1);
-  if(picturePool.length) visibleSlots.push(picturePool.shift());
+
+  // Reveal the winning tile, then flip the same picture into the large preview.
+  if(tiles[targetIndex]) tiles[targetIndex].classList.add("active");
+  await wait(250);
   renderSlots();
-  $("poolHint").textContent=`${picturePool.length+visibleSlots.length} surprise item(s) left in the pool`;
-  $("spinBtn").disabled=false;$("spinBtn").textContent="✦ SPIN ✦";busy=false;
+
+  $("photoInner").innerHTML="";
+  const img=document.createElement("img");
+  img.src=chosen.url;
+  img.alt=chosen.name;
+  $("photoInner").appendChild(img);
+  $("imageName").textContent=chosen.name;
+
+  $("poolHint").textContent=`${picturePool.length+visibleSlots.length-1} surprise item(s) remaining`;
+  $("spinBtn").disabled=false;
+  $("spinBtn").textContent="✦ SPIN ✦";
+  busy=false;
 }
 $("startBtn").addEventListener("click",async()=>{
   $("welcome").classList.add("hidden");$("surprise").classList.remove("hidden");
