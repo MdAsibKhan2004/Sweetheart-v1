@@ -78,14 +78,14 @@ h1{font-size:clamp(2rem,5vw,4.3rem);text-align:center;margin:18px 0 12px;color:#
   .game-title{font-size:1.4rem;line-height:34px;height:34px;margin:0 0 8px;overflow:hidden}
   .game-layout{grid-template-columns:minmax(0,1fr);width:100%;gap:8px;align-items:start}
   .viewer{gap:8px}
-  .photo-frame{width:auto;max-width:88vw;height:calc(var(--app-h)*.70 - 136px);padding:5px;border-width:2px}
+  .photo-frame{width:auto;max-width:88vw;height:calc(var(--app-h)*.70 - 172px);padding:5px;border-width:2px}
   .namebox{width:min(88vw,340px);height:36px;line-height:36px;padding:0 10px;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .machine{width:min(94vw,calc(var(--app-h)*.345 + 16px));margin-inline:auto;padding:8px;border-radius:18px}
   .slots{height:calc(var(--app-h)*.30);grid-template-rows:repeat(3,minmax(0,1fr));gap:5px}
   .slot{aspect-ratio:auto;min-height:0;border-radius:10px}
   .slot .veil{font-size:1.1rem}
-  .music{top:6px;right:6px;bottom:auto;padding:4px;gap:4px}
-  .music button{width:28px;height:28px;font-size:13px}
+  .music{top:auto;bottom:6px;left:50%;right:auto;transform:translateX(-50%);padding:0;gap:16px;background:none;border:0;box-shadow:none}
+  .music button{width:34px;height:34px;font-size:15px;box-shadow:0 0 10px #ff1744}
 }
 </style>
 </head>
