@@ -271,7 +271,6 @@ h1,.game-title{font-family:var(--script);font-style:normal;font-weight:400;lette
     <div class="viewer">
       <div class="photo-frame"><div class="photo-inner" id="photoInner"><span style="color:#ffb1c5;text-align:center;padding:20px">Your surprise photo will appear here ❤️</span></div></div>
       <div class="namebox" id="imageName">A special surprise for you</div>
-      <div class="reason" id="reason"></div>
           </div>
   </div>
 </section>
@@ -341,7 +340,6 @@ ar amar prithibi ta aro shundor hoye gelo.
 
 Always yours, my Jan. ❤`
 };
-const REASONS = ["Your smile fixes my worst days","You make ordinary moments feel special","Your voice is my peace","You are my best friend and my favourite person","Every moment with you feels like home","You make me want to be a better man","Just thinking of you makes me smile","You are my today and all my tomorrows"];
 /* ===================== */
 const ASSETS_FILE = "assets.json";
 const FALLBACK_PICTURES = [];
@@ -380,7 +378,7 @@ $("photoInner").addEventListener("click",e=>{if(e.target.tagName==="IMG"){$("lbI
 $("yesBtn").addEventListener("click",()=>{$("ask").classList.add("hidden");typeLetter(LETTERS.yes);const m=$("yesMsg");m.textContent="I knew it! I love you "+HER_NAME+", forever and ever 💖";m.classList.remove("hidden");for(let i=0;i<5;i++)setTimeout(()=>burst(Math.random()*innerWidth,Math.random()*innerHeight*.7,60),i*350)});
 function dodge(e){e.preventDefault();const b=$("noBtn");b.style.left=(Math.random()*200-100)+"px";b.style.top=(Math.random()*120-60)+"px";b.textContent=["Nope 😜","Try again 😘","Wrong button 💕","Not allowed 😂"][Math.floor(Math.random()*4)]}
 $("noBtn").addEventListener("pointerenter",dodge);$("noBtn").addEventListener("pointerdown",dodge);$("noBtn").addEventListener("click",dodge);
-function onReveal(item){revealed.add(item.url);$("reason").textContent="💗 "+REASONS[(revealed.size-1)%REASONS.length];burst(innerWidth/2,innerHeight*.4,80)}
+function onReveal(item){revealed.add(item.url);burst(innerWidth/2,innerHeight*.4,80)}
 function finale(){if(finaleShown)return;finaleShown=true;setTimeout(()=>openLetter(true),900)}
 
 // ---------- sky: stars + floating glow ----------
